@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Booking Servis - Speed Garage</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo Bengkel" onerror="this.style.display='none'">
+                <h2>SPEED GARAGE</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="form_booking.html" class="active">Booking Servis</a></li>
+                <li><a href="data_booking.php">Data Booking</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container fade-in">
+                <h2>Form Booking Servis Mobil</h2>
+                <p class="form-subtitle">Isi formulir di bawah ini untuk booking servis kendaraan Anda</p>
+                
+                <form action="proses_tambah.php" method="POST" id="bookingForm" onsubmit="return validateForm()">
+                    
+
+                    <div class="form-group">
+                        <label for="nama">Nama Pemilik <span class="required">*</span></label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                        <span class="error-message" id="error-nama"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hp">Nomor HP <span class="required">*</span></label>
+                        <input type="text" id="hp" name="hp" placeholder="Contoh: 081234567890" required>
+                        <span class="error-message" id="error-hp"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="merek">Merek Mobil <span class="required">*</span></label>
+                        <select id="merek" name="merek" required>
+                            <option value="">-- Pilih Merek --</option>
+                            <option value="Toyota">Toyota</option>
+                            <option value="Honda">Honda</option>
+                            <option value="Daihatsu">Daihatsu</option>
+                            <option value="Mitsubishi">Mitsubishi</option>
+                            <option value="Suzuki">Suzuki</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Mazda">Mazda</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Mercedes-Benz">Mercedes-Benz</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                        <span class="error-message" id="error-merek"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model">Model / Tipe Mobil <span class="required">*</span></label>
+                        <input type="text" id="model" name="model" placeholder="Contoh: Avanza, Jazz, Xenia" required>
+                        <span class="error-message" id="error-model"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tahun">Tahun Mobil <span class="required">*</span></label>
+                        <input type="number" id="tahun" name="tahun" placeholder="Contoh: 2020" min="1990" max="2026" required>
+                        <span class="error-message" id="error-tahun"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jenis_servis">Jenis Servis <span class="required">*</span></label>
+                        <select id="jenis_servis" name="jenis_servis" onchange="updateHarga()" required>
+                            <option value="">-- Pilih Jenis Servis --</option>
+                            <option value="Ganti Oli">Ganti Oli - Rp 150.000</option>
+                            <option value="Tune Up">Tune Up - Rp 300.000</option>
+                            <option value="Servis Ringan">Servis Ringan - Rp 500.000</option>
+                            <option value="Servis Besar">Servis Besar - Rp 1.000.000</option>
+                        </select>
+                        <span class="error-message" id="error-jenis"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="harga">Harga Servis</label>
+                        <input type="text" id="harga_display" placeholder="Harga akan muncul otomatis" readonly>
+                        <input type="hidden" id="harga" name="harga" value="">
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Booking Sekarang</button>
+                        <button type="reset" class="btn btn-secondary" onclick="resetHarga()">Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Speed Garage. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
